@@ -17,6 +17,18 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.new(room_params)
+
+    respond_to do |format|
+      if @room.save
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.append('rooms', partial: 'shared/room', locals: { room: @room })
+        end
+      else
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace('room_form', partial: 'rooms/form', locals: { room: @room })
+        end
+      end
+    end
   end
 
   def update; end
