@@ -126,6 +126,7 @@ GEM
       i18n (>= 1.8.11, < 2)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    htmlbeautifier (1.4.2)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.2.3)
@@ -326,6 +327,7 @@ DEPENDENCIES
   devise (~> 4.9, >= 4.9.3)
   factory_bot_rails (~> 6.2)
   faker (~> 3.2, >= 3.2.2)
+  htmlbeautifier (~> 1.4, >= 1.4.2)
   importmap-rails
   jbuilder
   pg (~> 1.1)
