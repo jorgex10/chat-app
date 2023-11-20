@@ -25,13 +25,23 @@ class RoomsController < ApplicationController
         end
       else
         format.turbo_stream do
-          render turbo_stream: turbo_stream.replace('room_form', partial: 'rooms/form', locals: { room: @room })
+          render turbo_stream: turbo_stream.replace('room_form', partial: 'rooms/form', locals: { room: @room, title: 'Create new room' })
         end
       end
     end
   end
 
-  def update; end
+  def update
+    respond_to do |format|
+      if @room.update(room_params)
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace("room_#{@room.id}", partial: 'shared/room', locals: { room: @room })
+        end
+      else
+        format.html { render :edit }
+      end
+    end
+  end
 
   def destroy
     @room.destroy!
