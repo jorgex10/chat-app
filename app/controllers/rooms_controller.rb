@@ -22,7 +22,7 @@ class RoomsController < ApplicationController
       if @room.save
         current_user.user_rooms.create(room: @room)
         format.turbo_stream do
-          render turbo_stream: turbo_stream.append('rooms', partial: 'shared/room', locals: { room: @room })
+          render turbo_stream: turbo_stream.append("user_#{current_user.id}_rooms", partial: 'shared/room', locals: { room: @room })
         end
       else
         format.turbo_stream do
