@@ -12,3 +12,6 @@ Layout/LineLength:
 
 Metrics/AbcSize:
   Enabled: false
+
+Exclude:
+  - db/schema.rb
