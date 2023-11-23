@@ -5,7 +5,7 @@
   </div>
 
   <div class="flex gap-3">
-    <%= button_to '#', class: "text-sm font-medium bg-sky-800 text-white py-1 px-3 rounded", params: { message: message }, method: :get do %>
+    <%= link_to edit_room_message_path(message.room, message), class: "text-sm font-medium bg-sky-800 text-white py-1 px-3 rounded" do %>
       Edit
     <% end %>
 

@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
-  before_action :set_room, only: :create
+  before_action :set_room, only: %i[create edit]
+  before_action :set_message, only: %i[edit update]
 
   def create
     @message = @room.messages.new(message_params)
@@ -10,10 +11,22 @@ class MessagesController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    respond_to do |format|
+      format.turbo_stream if @message.update(message_params)
+    end
+  end
+
   private
 
   def message_params
     params.require(:message).permit(:content)
+  end
+
+  def set_message
+    @message = Message.find(params[:id])
   end
 
   def set_room
