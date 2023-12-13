@@ -13,6 +13,9 @@ Layout/LineLength:
 Metrics/AbcSize:
   Enabled: false
 
+Metrics/BlockLength:
+  Enabled: false
+
 AllCops:
   Exclude:
     - db/schema.rb
